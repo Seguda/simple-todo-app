@@ -32,6 +32,11 @@
   margin-bottom: 15px;
   border-radius: 10px;
   list-style: square;
+  transition: background-color .2s ease-out; 
+}
+.todoList .theList li:hover {
+  background-color: rgba(252, 162, 89, 0.781);
+  cursor: pointer;
 }
 ul.theList {
   padding: 0;

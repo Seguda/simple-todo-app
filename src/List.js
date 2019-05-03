@@ -9,6 +9,7 @@ class List extends Component {
             items: []
         };
         this.addItem = this.addItem.bind(this);
+        this.deleteItem = this.deleteItem.bind(this);
     }
     addItem(e) {
         if (this.inputElement.value !== "") {
@@ -25,17 +26,25 @@ class List extends Component {
             this.inputElement.value = "";
         }
 
-        console.log(this.state.items);
-
         e.preventDefault();
 
+    }
+    deleteItem(key) {
+        var filteredItems = this.state.items.filter((item) => {
+            return (item.key !== key);
+        });
+
+        this.setState({
+            items: filteredItems
+        });
     }
     render() {
         return (
           <div className="todoList">
             <div className="header">
               <form onSubmit={this.addItem}>
-                <input ref={(a) => this.inputElement = a} 
+                <input
+                  ref={a => (this.inputElement = a)}
                   type="text"
                   name="todo_input_area"
                   id="todo-input-area"
@@ -46,7 +55,7 @@ class List extends Component {
                 <button type="submit">Add</button>
               </form>
             </div>
-                <Items entries={this.state.items} />
+            <Items entries={this.state.items} delete={this.deleteItem}/>
           </div>
         );
     }
