@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Items from "./Items";
+import "./List.css";
 
 class List extends Component {
     constructor(props) {
@@ -31,7 +32,7 @@ class List extends Component {
     }
     render() {
         return (
-          <div className="todoListMain">
+          <div className="todoList">
             <div className="header">
               <form onSubmit={this.addItem}>
                 <input ref={(a) => this.inputElement = a} 
